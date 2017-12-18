@@ -5,7 +5,7 @@
   "author": "(Muhammed <elrakabawi@lamarkaz.com> & Nour <nour@lamarkaz.com>)",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --public ffee0e7ae49d4d179382e28f5c092d56.vfs.cloud9.us-west-2.amazonaws.com",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
