@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Toolbar from './components/Toolbar.vue'
-import Auth from './components/Auth.vue'
+import Toolbar from './Toolbar.vue'
+import Auth from './Auth.vue'
 export default {
   name: 'app',
   components:{

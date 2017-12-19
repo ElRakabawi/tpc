@@ -1,15 +1,21 @@
 import Web3 from "web3";
+import Wallet from 'ethereumjs-wallet';
+import tx from "ethereumjs-tx";
+import download from "js-file-download";
 
-var Blockchain = {
+window.Blockchain = {
     create: function(password){
         if(password.length < 8){
             return false;
         }else{
-            var dk = keythereum.create();
-            return keyObject = keythereum.dump(password, dk.privateKey, dk.salt, dk.iv)
+            var wallet = Wallet.generate();
+            var v3 = wallet.toV3(password);
+            download(v3, "identity.json");
+            return v3;
         }
         
+    },
+    decrypt: function(json, password){
+        return Wallet.fromV3(json, password);
     }
 };
-
-export default { Blockchain };
