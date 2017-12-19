@@ -9,9 +9,8 @@ window.Blockchain = {
             return false;
         }else{
             var wallet = Wallet.generate();
-            var v3 = wallet.toV3(password);
-            download(v3, "identity.json");
-            return v3;
+            download(wallet.toV3(password), "identity.json");
+            return wallet.toV3(password);
         }
         
     },

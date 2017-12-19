@@ -9,7 +9,7 @@
             <div style="text-align: center; margin-bottom: 30px; font-size: 16px; font-weight: 600">You need a registered identity to authenticate.<br/> <span style="color: grey; font-size: 15px; font-weight: 300">Please create an identity and ask your operator to register you.</span></div>
             <v-container style="padding-left: 10%; padding-right: 15%; border-top: 1px #e2e2e2 solid">
               <v-text-field
-              prepend-icon="vpn_key" single-line
+              prepend-icon="attach_file" single-line
               v-model="filename" :label="label"
               @click.native="onFocus"
               :disabled="disabled"
@@ -28,11 +28,12 @@
                 :append-icon-cb="() => (passBol = !passBol)"
                 :type="passBol ? 'password' : 'text'"
                 counter
+                required
               ></v-text-field>
               
             </v-container>
-              <v-btn dark style="height: 50px; background-color: #4fa0ca; color: white">
-                <v-icon style="font-size: 23px; padding-right: 5px">keyboard_arrow_right</v-icon>Authenticate
+              <v-btn dark style="height: 50px; background-color: #4fa0ca; color: white; box-shadow: none">
+                <v-icon style="font-size: 20px; padding-right: 5px">vpn_key</v-icon>Authenticate
               </v-btn>
           </v-card>
         </v-flex>
@@ -72,7 +73,8 @@
             return {
                 filename: "",
                 passBol: true,
-                password: 'Password'
+                password: 'Password',
+                json:""
             };
         },
         watch: {
@@ -102,7 +104,9 @@
                 } else {
                     this.filename = $event.target.value.split('\\').pop();
                 }
-                this.$emit('fileData', files);
+                   var reader = new FileReader();
+                
+                alert(JSON.stringify(files[0]))
             }
         }
     };

@@ -1,56 +1,33 @@
 <template>
   <div>
-    <v-dialog v-model="dialog" color="secondary" persistent max-width="500px">
+    <v-dialog v-model="dialog" max-width="500px">
       <v-card>
         <v-card-title>
-          <span class="headline">Create an Identity</span>
+          <span class="headline" style="color: #4fa0ca">Create an Identity</span>
         </v-card-title>
-        <v-card-text>
+        <v-card-text style="padding-left: 12.5%; padding-right: 12.5%">
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal first name" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal last name" hint="example of persistent helper text"
-                  persistent-hint
+              <v-flex xs12>
+                <label></label>
+                <v-text-field
+                  prepend-icon="lock" single-line
+                  name="input-10-1"
+                  label="Choose a new password"
+                  hint="At least 8 characters"
+                  min="8"
+                  :append-icon="passBol ? 'visibility' : 'visibility_off'"
+                  :append-icon-cb="() => (passBol = !passBol)"
+                  :type="passBol ? 'password' : 'text'"
+                  counter
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12>
-                <v-text-field label="Email" required></v-text-field>
-              </v-flex>
-              <v-flex xs12>
-                <v-text-field label="Password" type="password" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  label="Age"
-                  required
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                ></v-select>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  label="Interests"
-                  multiple
-                  autocomplete
-                  chips
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                ></v-select>
-              </v-flex>
             </v-layout>
           </v-container>
-          <small>*indicates required field</small>
         </v-card-text>
-        <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
-        </v-card-actions>
+          <v-btn color="primary" @click.native="dialog = false" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">vpn_key</v-icon></v-icon>Generate Identity file</v-btn>
       </v-card>
     </v-dialog>
     
@@ -70,7 +47,9 @@
   export default {
     data () {
       return {
-        dialog: false
+        dialog: false,
+        passBol: true,
+        password: 'Password'
       }
     }
   }
