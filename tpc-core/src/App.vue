@@ -1,28 +1,26 @@
 <template>
   <div id="app">
     <Toolbar></Toolbar>
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Auth></Auth>
   </div>
 </template>
 
 <script>
 import Toolbar from './components/Toolbar.vue'
+import Auth from './components/Auth.vue'
 export default {
   name: 'app',
   components:{
-    Toolbar
+    Toolbar, 
+    Auth
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', cursive;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
 }
 </style>

@@ -5,8 +5,12 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import Toolbar from './components/Toolbar.vue'
+import Auth from './components/Auth.vue'
 import '../node_modules/vuetify/dist/vuetify.min.css';
- 
+import Blockchain from "./js/blockchain.js";
+
+//alert(JSON.stringify(Blockchain.create("12345678")));
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false
