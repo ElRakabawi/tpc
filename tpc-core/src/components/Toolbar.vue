@@ -27,17 +27,16 @@
           </v-container>
         </v-card-text>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click.native="dialog = false" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">vpn_key</v-icon></v-icon>Generate Identity file</v-btn>
+          <v-btn color="primary" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">vpn_key</v-icon></v-icon>Generate Identity file</v-btn>
       </v-card>
     </v-dialog>
     
     
     <v-toolbar style="background-color: #4fa0ca; color: white">
-      <v-toolbar-side-icon style="color: white"></v-toolbar-side-icon>
-      <img src="../assets/icon.svg" height="34px" style="margin-right: -15px; margin-left: 15px; margin-top: 5px; cursor: pointer"></img>
+      <img src="../assets/icon.svg" height="34px" style="margin-right: -15px; margin-left: 10%; margin-top: 5px; cursor: pointer"></img>
       <v-toolbar-title v-on:click="$router.push('/')" style="font-size: 18px">Tamper-Proof Certification</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat color="white" class="create_btn" @click.stop="dialog = true">
+      <v-btn v-if="currView === 'auth'" flat color="white" class="create_btn" @click.stop="dialog = true">
         <v-icon style="margin-right: 3px">fingerprint</v-icon>Create Identity
       </v-btn>
     </v-toolbar>
@@ -46,11 +45,12 @@
 
 <script>
   export default {
+    props:["currView"],
     data () {
       return {
         dialog: false,
         passBol: true,
-        password: 'Password'
+        password: 'Password',
       }
     }
   }

@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import App from './components/App.vue'
 import Vuetify from 'vuetify'
-import Toolbar from './components/Toolbar.vue'
-import Auth from './components/Auth.vue'
-import Inst from './components/Inst.vue'
 import '../node_modules/vuetify/dist/vuetify.min.css';
 import "./js/blockchain.js";
 

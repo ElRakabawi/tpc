@@ -32,7 +32,7 @@
               ></v-text-field>
               
             </v-container>
-              <v-btn dark style="height: 50px; background-color: #4fa0ca; color: white; box-shadow: none">
+              <v-btn dark style="height: 50px; background-color: #4fa0ca; color: white; box-shadow: none" v-on:click="authenticate">
                 <v-icon style="font-size: 20px; padding-right: 5px">vpn_key</v-icon>Authenticate
               </v-btn>
           </v-card>
@@ -104,9 +104,16 @@
                 } else {
                     this.filename = $event.target.value.split('\\').pop();
                 }
-                   var reader = new FileReader();
-                
-                alert(JSON.stringify(files[0]))
+                var reader = new FileReader();
+                reader.readAsText(files[0], "UTF-8");
+                var self = this;
+                reader.onload = function(file){
+                    self.json = file;
+                }
+            },
+            authenticate(){
+                alert("hi")
+                //alert(Blockchain.decrypt(this.json, this.password))
             }
         }
     };

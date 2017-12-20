@@ -1,0 +1,235 @@
+<template>
+    <div>
+        <v-container>
+          <v-card>
+            <v-card-title>
+              <span style="font-size: 21px; margin-left: 10px; font-weight: 400;">Institutions list</span>
+              <v-spacer></v-spacer>
+              <v-text-field
+                append-icon="search"
+                label="Search"
+                single-line
+                hide-details
+                v-model="search"
+              ></v-text-field>
+            </v-card-title>
+            <v-data-table
+                v-bind:headers="headers"
+                v-bind:items="items"
+                v-bind:search="search"
+                style="margin-down: 50px"
+              >
+              <template slot="items" slot-scope="props">
+                <td class="text-xs-left">{{ props.item.name }}</td>
+                <td class="text-xs-center">{{ props.item.date }}</td>
+                <td class="text-xs-center">{{ props.item.offName }}</td>
+                <td class="text-xs-center">{{ props.item.offAdd }}</td>
+                <td class="text-xs-center">{{ props.item.offDate }}</td>
+                <td class="text-xs-center">{{ props.item.fac }}</td>
+                </td>
+              </template>
+              <template slot="pageText" slot-scope="{ pageStart, pageStop }">
+                From {{ pageStart }} to {{ pageStop }}
+              </template>
+            </v-data-table>
+            <v-btn color="primary" @click.native="dialog = true" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
+          </v-card>
+        </v-container>
+        
+        <v-dialog v-model="dialog" max-width="500px">
+          <v-card>
+            <v-card-title>
+              <span class="headline" style="color: #4fa0ca">Give access to an Institution</span>
+            </v-card-title>
+            <v-card-text style="padding-left: 12.5%; padding-right: 12.5%">
+              <v-container grid-list-md>
+                <v-layout wrap>
+                  <v-flex xs12>
+                    <label></label>
+                    <template>
+                      <v-form v-model="valid" ref="form" lazy-validation>
+                        <v-text-field
+                          label="Name"
+                          v-model="name"
+                          :rules="nameRules"
+                          required
+                        ></v-text-field>
+                        <v-text-field
+                          label="Officer Name"
+                          v-model="offName"
+                          :rules="offNameRules"
+                          required
+                        ></v-text-field>
+                        <v-text-field
+                          label="Officer Address"
+                          v-model="offAdd"
+                          :rules="offAddRules"
+                          required
+                        ></v-text-field>
+                      </v-form>
+                    </template>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" @click.native="dialog = false" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
+          </v-card>
+        </v-dialog>
+    </div>
+</template>
+
+
+
+<script>
+  export default {
+    data () {
+      return {
+        dialog: false,
+        min1chars: (v) => v.length >= 1 || 'Institution name is missing',
+        tmp: '',
+        search: '',
+        pagination: {},
+        headers: [
+          {
+            text: 'Institution Name',
+            align: 'left',
+            sortable: true,
+            value: 'name'
+          },
+          { text: 'Added On', value: 'date', align: 'center' },
+          { text: 'Officer Name', value: 'offName', align: 'center' },
+          { text: 'Officer Address', value: 'offAdd', align: 'center' },
+          { text: 'Officer Added on', value: 'offDate', align: 'center' },
+          { text: 'Faculties', value: 'fac', align: 'center' }
+        ],
+        items: [
+          {
+            value: false,
+            name: 'Cairo University',
+            offName: 'Ahmed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 13,
+            date: 'Nov 13, 2017' ,
+          },
+          {
+            value: false,
+            name: 'Ain Shams University',
+            offName: 'Mohamed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 29,
+            date: 'Nov 13, 2017',
+          },
+          {
+            value: false,
+            name: 'October University for Modern Sciences and Arts',
+            offName: 'Amr Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 19,
+            date: 'Nov 13, 2017',
+          },
+                    {
+            value: false,
+            name: 'Cairo University',
+            offName: 'Ahmed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 13,
+            date: 'Nov 13, 2017',
+          },
+          {
+            value: false,
+            name: 'Ain Shams University',
+            offName: 'Mohamed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 29,
+            date: 'Nov 13, 2017',
+          },
+          {
+            value: false,
+            name: 'October University for Modern Sciences and Arts',
+            offName: 'Amr Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 19,
+            date: 'Dec 20, 2017',
+          },
+                    {
+            value: false,
+            name: 'Cairo University',
+            offName: 'Ahmed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 13,
+            date: 'Dec 20, 2017',
+          },
+          {
+            value: false,
+            name: 'Ain Shams University',
+            offName: 'Mohamed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 29,
+            date: 'Dec 20, 2017',
+          },
+          {
+            value: false,
+            name: 'October University for Modern Sciences and Arts',
+            offName: 'Amr Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 19,
+            date: 'Dec 20, 2017',
+          },
+                    {
+            value: false,
+            name: 'Cairo University',
+            offName: 'Ahmed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 13,
+            date: 'Dec 20, 2017',
+          },
+          {
+            value: false,
+            name: 'Ain Shams University',
+            offName: 'Mohamed Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Dec 20, 2017',
+            fac: 29,
+            date: 'Nov 13, 2017',
+          },
+          {
+            value: false,
+            name: 'October University for Modern Sciences and Arts',
+            offName: 'Amr Elbaz',
+            offAdd: '0xab0bc903f11446146df74f6e4b0c9e16',
+            offDate: 'Nov 13, 2017',
+            fac: 19,
+            date: 'Dec 20, 2017',
+          }
+        ],
+          valid: true,
+          name: '',
+          nameRules: [
+            (v) => !!v || 'Institution Name is required',
+          ],
+          offName: '',
+          offNameRules: [
+            (v) => !!v || 'Officer Name is required',
+          ],
+          offAdd: '',
+          offAddRules: [
+            (v) => !!v || 'Address is required',
+            (v) => /0x.{40}$/.test(v) || 'Address must be valid'
+          ],
+          select: null,
+          checkbox: false
+        }
+    }
+  }
+</script>
