@@ -34,7 +34,8 @@
     
     <v-toolbar style="background-color: #4fa0ca; color: white">
       <v-toolbar-side-icon style="color: white"></v-toolbar-side-icon>
-      <v-toolbar-title>Tamper-Proof Certification</v-toolbar-title>
+      <img src="../assets/icon.svg" height="30px" style="margin-right: -15px; margin-left: 15px; margin-top: 5px; cursor: pointer"></img>
+      <v-toolbar-title v-on:click="$router.push('/')" style="font-size: 18px">Tamper-Proof Certification</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat color="white" class="create_btn" @click.stop="dialog = true">
         <v-icon style="margin-right: 3px">fingerprint</v-icon>Create Identity
