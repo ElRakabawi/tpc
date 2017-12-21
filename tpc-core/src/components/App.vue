@@ -2,7 +2,7 @@
   <div id="app">
     <Toolbar v-bind:currView="currView"></Toolbar>
     <Auth v-if="currView === 'auth'"></Auth>
-    <Reg v-else-if="currView === 'reg'"></Reg>
+    <Reg v-if="currView === 'auth'"></Reg>
     <Inst v-else-if="currView === 'inst'"></Inst>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   name: 'app',
   data (){
     return {
-      currView: 'reg'
+      currView: 'auth'
     }
   },
   components:{

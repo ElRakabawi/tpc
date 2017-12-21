@@ -47,7 +47,7 @@
                   <v-flex xs12>
                     <label></label>
                     <template>
-                      <v-form v-model="valid" ref="form" lazy-validation>
+                      <v-form ref="form" lazy-validation>
                         <v-text-field
                           label="Name"
                           v-model="name"
@@ -73,7 +73,7 @@
               </v-container>
             </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="primary" @click.native="dialog = false" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
+              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
           </v-card>
         </v-dialog>
     </div>
@@ -213,7 +213,6 @@
             date: 'Dec 20, 2017',
           }
         ],
-          valid: true,
           name: '',
           nameRules: [
             (v) => !!v || 'Institution Name is required',
@@ -226,10 +225,13 @@
           offAddRules: [
             (v) => !!v || 'Address is required',
             (v) => /0x.{40}$/.test(v) || 'Address must be valid'
-          ],
-          select: null,
-          checkbox: false
-        }
+          ]
+      }
+    },
+    computed: {
+      valid: function(){
+        return (this.nameRules[0](this.name) === true && this.offNameRules[0](this.offName) === true && this.offAddRules[1](this.offAdd) === true)
+      }
     }
   }
 </script>
