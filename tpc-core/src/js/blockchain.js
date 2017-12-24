@@ -12,7 +12,7 @@ window.Blockchain = {
             var v3 = wallet.toV3(password);
             if(v3){
                 download(JSON.stringify(v3), "identity.json");
-                return v3;   
+                return v3;
             }
         }
         

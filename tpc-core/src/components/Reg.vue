@@ -29,7 +29,6 @@
                 <td class="text-xs-center">{{ props.item.date }}</td>
                 <td class="text-xs-center">{{ props.item.offName }}</td>
                 <td class="text-xs-center">{{ props.item.instAdd }}</td>
-                <td class="text-xs-center">{{ props.item.offDate }}</td>
                 <td class="text-xs-center">{{ props.item.fac }}</td>
                 <td class="text-xs-center">
                   <v-btn @click.native="settings_dialog = true" style="background-color: transparent; margin-left: -20px; margin-right: -20px; box-shadow: none">
@@ -84,7 +83,7 @@
               </v-container>
             </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
+              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 100%; margin: 0px; border-radius: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
           </v-card>
         </v-dialog>
         
@@ -125,8 +124,8 @@
               </v-container>
             </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="error" style="box-shadow: none; height: 60px; width: 40%; margin: 0px; float: left;"><v-icon style="font-size: 21px; padding-right: 3px">remove_circle_outline</v-icon></v-icon>Delete Institution</v-btn>
-              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 60%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add_check</v-icon></v-icon>Edit Institution</v-btn>
+              <v-btn color="error" style="box-shadow: none; height: 60px; width: 40%; margin: 0px; float: left; border-radius: 0px"><v-icon style="font-size: 21px; padding-right: 3px">remove_circle_outline</v-icon></v-icon>Delete Institution</v-btn>
+              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 60%; margin: 0px; border-radius: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add_check</v-icon></v-icon>Edit Institution</v-btn>
           </v-card>
         </v-dialog>
     </div>
@@ -154,7 +153,6 @@
           { text: 'Added On', value: 'date', align: 'center' },
           { text: 'Officer Name', value: 'offName', align: 'center' },
           { text: 'Institution Address', value: 'instAdd', align: 'center' },
-          { text: 'Officer Added on', value: 'offDate', align: 'center' },
           { text: 'Faculties', value: 'fac', align: 'center' },
           { text: 'Edit', value: 'settings', align: 'center' }
         ],
