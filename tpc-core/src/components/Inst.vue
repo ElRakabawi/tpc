@@ -48,7 +48,7 @@
         <v-dialog v-model="dialog" max-width="500px">
           <v-card>
             <v-card-title>
-              <span class="headline" style="color: #4fa0ca">Give access to an Institution</span>
+              <span class="headline" style="color: #4fa0ca">Give access to a Faculty</span>
             </v-card-title>
             <v-card-text style="padding-left: 12.5%; padding-right: 12.5%">
               <v-container grid-list-md>
@@ -82,14 +82,14 @@
               </v-container>
             </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Institution</v-btn>
+              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add</v-icon></v-icon>Add Faculty</v-btn>
           </v-card>
         </v-dialog>
         
         <v-dialog v-model="settings_dialog" max-width="500px">
           <v-card>
             <v-card-title>
-              <span class="headline" style="color: #4fa0ca">Edit this Institution</span>
+              <span class="headline" style="color: #4fa0ca">Edit this Faculty</span>
             </v-card-title>
             <v-card-text style="padding-left: 12.5%; padding-right: 12.5%">
               <v-container grid-list-md>
@@ -99,7 +99,7 @@
                     <template>
                       <v-form ref="form" lazy-validation>
                         <v-text-field
-                          label="Institution Name"
+                          label="Faculty Name"
                           v-model="name"
                           :rules="nameRules"
                           required
@@ -111,9 +111,9 @@
                           required
                         ></v-text-field>
                         <v-text-field
-                          label="Institution Address"
-                          v-model="instAdd"
-                          :rules="instAddRules"
+                          label="Faculty Address"
+                          v-model="facAdd"
+                          :rules="facAddRules"
                           required
                         ></v-text-field>
                       </v-form>
@@ -123,8 +123,8 @@
               </v-container>
             </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="error" style="box-shadow: none; height: 60px; width: 40%; margin: 0px; float: left;"><v-icon style="font-size: 21px; padding-right: 3px">remove_circle_outline</v-icon></v-icon>Delete Institution</v-btn>
-              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 60%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add_check</v-icon></v-icon>Edit Institution</v-btn>
+              <v-btn color="error" style="box-shadow: none; height: 60px; width: 40%; margin: 0px; float: left;"><v-icon style="font-size: 21px; padding-right: 3px">remove_circle_outline</v-icon></v-icon>Delete Faculty</v-btn>
+              <v-btn color="primary" :disabled="!valid" style="box-shadow: none; height: 60px; width: 60%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">playlist_add_check</v-icon></v-icon>Edit Faculty</v-btn>
           </v-card>
         </v-dialog>
     </div>
@@ -138,7 +138,7 @@
       return {
         dialog: false,
         settings_dialog: false,
-        min1chars: (v) => v.length >= 1 || 'Institution name is missing',
+        min1chars: (v) => v.length >= 1 || 'Faculty name is missing',
         tmp: '',
         search: '',
         pagination: {},
@@ -268,7 +268,7 @@
         ],
           name: '',
           nameRules: [
-            (v) => !!v || 'Institution Name is required',
+            (v) => !!v || 'Faculty Name is required',
           ],
           offName: '',
           offNameRules: [

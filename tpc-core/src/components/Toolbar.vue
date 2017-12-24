@@ -11,6 +11,7 @@
               <v-flex xs12>
                 <label></label>
                 <v-text-field
+                  v-model="password"
                   prepend-icon="lock" single-line
                   name="input-10-1"
                   label="Choose a new password"
@@ -27,7 +28,7 @@
           </v-container>
         </v-card-text>
           <v-spacer></v-spacer>
-          <v-btn color="primary" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">vpn_key</v-icon></v-icon>Generate Identity file</v-btn>
+          <v-btn :disabled="!valid" color="primary" style="box-shadow: none; height: 60px; width: 100%; margin: 0px"><v-icon style="font-size: 21px; padding-right: 5px">vpn_key</v-icon></v-icon>Generate Identity file</v-btn>
       </v-card>
     </v-dialog>
     
@@ -50,7 +51,12 @@
       return {
         dialog: false,
         passBol: true,
-        password: 'Password',
+        password: ''
+      }
+    },
+    computed: {
+      valid: function () {
+        return(this.password.length > 7)
       }
     }
   }
