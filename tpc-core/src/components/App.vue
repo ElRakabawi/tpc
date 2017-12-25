@@ -13,10 +13,14 @@
       <v-btn color="primary" class="create_btn" @click="currView = 'fac'">
         Faculty
       </v-btn>
+      <v-btn color="primary" class="create_btn" @click="currView = 'oper'">
+        Operator
+      </v-btn>
     <Auth v-if="currView === 'auth'"></Auth>
     <Reg v-else-if="currView === 'reg'"></Reg>
     <Inst v-else-if="currView === 'inst'"></Inst>
     <Fac v-else-if="currView === 'fac'"></Fac>
+    <Oper v-else-if="currView === 'oper'"></Oper>
   </div>
 </template>
 
@@ -26,6 +30,7 @@ import Auth from './Auth.vue'
 import Reg from './Reg.vue'
 import Inst from './Inst.vue'
 import Fac from './Fac.vue'
+import Oper from './Oper.vue'
 export default {
   name: 'app',
   data (){
@@ -34,7 +39,8 @@ export default {
       reg:"",
       inst:"", 
       fac:"",
-      auth:""
+      auth:"",
+      oper:""
     }
   },
   components:{
@@ -42,7 +48,8 @@ export default {
     Auth, 
     Reg, 
     Inst,
-    Fac
+    Fac,
+    Oper
   }
 }
 </script>
