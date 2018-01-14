@@ -35,7 +35,7 @@ export default {
   name: 'app',
   data (){
     return {
-      currView: 'inst',
+      currView: 'auth',
       reg:"",
       inst:"", 
       fac:"",
