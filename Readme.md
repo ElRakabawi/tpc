@@ -1,5 +1,4 @@
-Documentation
+# Documentation
 
-
-
-Don't forget to `npm install` ya Nour.
+`npm install` to install dependencies.
+`npm run dev` to run development server.
